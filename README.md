@@ -1,24 +1,57 @@
-# README
+# Nokshibunan Tracking
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[nokshibunan.com](https://nokshibunan.com)
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+### Clone the repository
 
-* System dependencies
+```shell
+git clone git@github.com:rubyrider/nokshibunan_tracking.git
+cd nokshibunan_tracking
+```
 
-* Configuration
+### Check your Ruby version
 
-* Database creation
+```shell
+ruby -v
+```
 
-* Database initialization
+The ouput should start with something like `ruby 2.5.1`
 
-* How to run the test suite
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (or rvm, whatever you prefer):
 
-* Services (job queues, cache servers, search engines, etc.)
+```shell
+rbenv install 2.5.1
+```
 
-* Deployment instructions
+### Install dependencies
 
-* ...
+Using [Bundler](https://github.com/bundler/bundler) and [Yarn](https://github.com/yarnpkg/yarn):
+
+```shell
+bundle && yarn
+```
+
+### Set environment variables
+
+Using rails credentials.yml.enc and master.key[(blog for details)](https://blog.eq8.eu/til/rails-52-credentials-tricks.html). 
+#### Contact Us for master key.
+
+
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
+
+## Serve
+
+```shell
+rails s
+```
+
+## Deploy
+
+### Coming soon..

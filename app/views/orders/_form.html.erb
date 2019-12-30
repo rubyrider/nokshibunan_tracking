@@ -1,0 +1,67 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currency %>
+    <%= form.text_field :currency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_name %>
+    <%= form.text_field :product_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_detail %>
+    <%= form.text_area :product_detail %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_date %>
+    <%= form.datetime_select :order_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estimated_delivery %>
+    <%= form.datetime_select :estimated_delivery %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status_id_id %>
+    <%= form.text_field :status_id_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_status %>
+    <%= form.number_field :payment_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_method_id %>
+    <%= form.text_field :payment_method_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

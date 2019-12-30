@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
+  devise_for :users
+
+  resources :products
+  resources :orders
 end

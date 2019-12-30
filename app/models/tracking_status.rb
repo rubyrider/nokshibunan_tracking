@@ -1,0 +1,2 @@
+class TrackingStatus < ApplicationRecord
+end

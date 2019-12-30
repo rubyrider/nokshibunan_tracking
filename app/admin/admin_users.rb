@@ -1,4 +1,6 @@
 ActiveAdmin.register AdminUser do
+  menu parent: 'User System', :label => "Super Admins"
+
   permit_params :email, :password, :password_confirmation
 
   index do

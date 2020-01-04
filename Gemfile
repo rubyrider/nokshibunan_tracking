@@ -39,30 +39,32 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'annotate'
+  gem "capistrano", '3.10.0'
+  gem 'capistrano-bundler', '1.6.0'
+  gem 'capistrano-logtail', '0.1.1'
+  gem 'capistrano-rails', '1.4.0'
+  gem 'capistrano-rails-console', '2.3.0', require: false
+  gem 'capistrano-rake', '0.2.0', require: false
+  gem 'capistrano-rbenv', '2.1.4'
+  gem 'capistrano-sidekiq', '1.0.3', github: 'seuros/capistrano-sidekiq'
+  gem 'capistrano-yarn', '2.0.2'
+  gem 'capistrano3-nginx', '2.1.6'
+  gem 'capistrano3-puma', '3.1.1'
   gem 'rubocop', '~> 0.52.1', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "capistrano", '3.10.0'
-  gem 'capistrano-rails', '1.4.0'
-  gem 'capistrano3-puma', '3.1.1'
-  gem 'capistrano-rbenv', '2.1.4'
-  gem 'capistrano-yarn', '2.0.2'
-  gem 'capistrano-bundler', '1.6.0'
-  gem 'capistrano-rake', '0.2.0', require: false
-  gem 'capistrano-rails-console', '2.3.0', require: false
-  gem 'capistrano-logtail', '0.1.1'
-  gem 'capistrano3-nginx', '2.1.6'
-  gem 'capistrano-sidekiq', '1.0.3', github: 'seuros/capistrano-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise'
 gem 'activeadmin', '2.2.0'
-gem 'arctic_admin', '3.0.0'
 gem 'activeadmin_addons'
+gem 'arctic_admin', '3.0.0'
 gem 'carrierwave', '~> 2.0'
+gem 'countries'
+gem 'devise'
 gem 'friendly_id', '~> 5.2.4'
 gem "rolify"
 gem 'sidekiq'
+gem 'phony_rails'

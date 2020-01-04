@@ -15,7 +15,8 @@ ActiveAdmin.register Order do
 
     f.inputs 'Pricing & Payments' do
       f.input :price
-      f.input :currency, as: :select, collection: CURRENCY.values
+      f.input :currency, as: :select, collection: ISO3166::Country.countries.sort_by(&:name)
+                                                      .collect { |c| [ c.currency_code, c.currency_code ] }
       f.input :delivery_fee
       f.input :delivery_method
       f.input :payment_method
@@ -25,8 +26,19 @@ ActiveAdmin.register Order do
 
     inputs 'User Details', for: :user do |u|
       u.input :phone_number, required: false, input_html: { name: 'user[phone_number]', value: resource.user&.phone_number }
+      u.input :country, required: false,
+              input_html: { name: 'user[country_code]' },
+              as: :select, collection: ISO3166::Country.countries.sort_by(&:name)
+                                           .collect { |c| [ c.name, c.alpha2 ] },
+              selected: resource.user&.country_code
       u.input :email, required: false, input_html: { name: 'user[email]', value: resource.user&.email }
       u.input :full_name, required: false, input_html: { name: 'user[full_name]', value: resource.user&.full_name }
+    end
+
+    f.has_many :notes do |link_f|
+      link_f.inputs "Notes" do
+        link_f.input :body, input_html: { class: 'autogrow', rows: 3 }
+      end
     end
 
     f.actions
@@ -47,23 +59,28 @@ ActiveAdmin.register Order do
     end
 
     def permitted_params
-      record = Order.column_names
-      params.permit(:_method, :id, :commit, :authenticity_token, order: record.each{|r| r.to_sym}, user: [:phone_number, :email, :full_name])
+      params.permit(order: [:address, :price, :currency, :product_name, :product_detail, :product_image, :order_date, :estimated_delivery_date, :payment_status, :payment_method_id, :tracking_status_id, :delivery_method_id, :paid_amount, :delivery_fee, notes_attributes: {}],
+                    user:  %i[phone_number email full_name country_code])
     end
 
     private
 
     def determine_user_id user_attrs
-      user = User.find_by_phone_number(user_attrs[:phone_number])
+      phone_number = PhonyRails.normalize_number(user_attrs[:phone_number], country_code: user_attrs[:country_code])
 
-      unless user.present?
-        random_password = '1234'
+      user = User.find_by_phone_number(phone_number)
+      if user.present?
+        user.assign_attributes(email: user_attrs[:email], full_name: user_attrs[:full_name],
+                               country_code: user_attrs[:country_code])
+
+        user.save!
+      else
+        random_password = rand.to_s[2..5]
 
         user = User.create(phone_number: user_attrs[:phone_number], email: user_attrs[:email],
                            full_name: user_attrs[:full_name], password: random_password,
-                           password_confirmation: random_password)
+                           password_confirmation: random_password, country_code: user_attrs[:country_code])
       end
-
       user.id
     end
   end

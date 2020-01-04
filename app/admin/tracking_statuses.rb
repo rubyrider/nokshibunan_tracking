@@ -2,8 +2,5 @@ ActiveAdmin.register TrackingStatus do
 
   menu parent: 'Order System', :label => "Tracking Status"
 
-  record = TrackingStatus.column_names
-
-  permit_params record.each{|r| r.to_sym}
-  
+  permit_params TrackingStatus.column_names.map(&:to_sym)
 end

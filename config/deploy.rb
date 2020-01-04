@@ -7,7 +7,7 @@ set :repo_url, 'git@github.com:rubyrider/nokshibunan_tracking.git'
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, File.read('.ruby-version').strip
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/credentials.yml.enc')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 set :assets_roles, [:web, :app]
 set :keep_releases, 2

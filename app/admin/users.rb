@@ -1,8 +1,8 @@
 ActiveAdmin.register User do
 
-  menu parent: 'User System', :label => "Users"
+  menu parent: 'User System', label: 'Users'
 
-  permit_params User.column_names.map(&:to_sym), :password, :password_confirmation, role_ids: []
+  permit_params User.column_names_excluded.map(&:to_sym), :password, :password_confirmation, role_ids: []
 
   info_columns = %i[phone_number email full_name nickname address
                     emergency_contact sex birth_date]
@@ -44,7 +44,7 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.inputs "User Details" do
+    f.inputs 'User Details' do
       info_columns.each do |attr|
         f.input attr
       end

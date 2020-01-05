@@ -1,0 +1,3 @@
+class BaseDecorator < SimpleDelegator
+
+end

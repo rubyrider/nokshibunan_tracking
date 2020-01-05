@@ -1,0 +1,12 @@
+<div class="summary-row">
+  <% Admin::DashboardDecorator.new.stats.each do |record| %>
+    <a href='<%= admin_orders_url(q: { tracking_status_id_eq: record.id }, order: 'id_desc', commit: 'Filter') %>' target="_blank">
+      <div class="summary-column">
+        <div class="summary-card">
+          <h3><%= record.name %></h3>
+          <p><%= record.order_count %></p>
+        </div>
+      </div>
+    </a>
+  <% end %>
+</div>

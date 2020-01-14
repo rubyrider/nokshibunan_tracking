@@ -1,5 +1,24 @@
 class OrdersController < InheritedResources::Base
 
+  def new
+
+  end
+
+  def create
+
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def track
+
+  end
   private
 
     def order_params

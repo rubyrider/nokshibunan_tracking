@@ -1,35 +1,51 @@
-<div class="flex-w flex-str size1 overlay1">
-  <div class="flex-w flex-col-sb wsize1 bg0 p-l-65 p-t-37 p-b-50 p-r-80 respon1">
-    <div class="wrappic1">
-      <a href="#">
-        <%= image_tag 'p1.jpg', height: 100 %>
-      </a>
-    </div>
-
-    <div class="w-full flex-c-m p-t-80 p-b-90">
-      <div class="wsize2">
-        <h3 class="l1-txt1 p-b-34 respon3">
-          Coming Soon
-        </h3>
-      </div>
-    </div>
-
-    <div class="flex-w">
-      <a href="https://www.facebook.com/nokshibunan/" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10">
-        <i class="fa fa-facebook"></i>
-      </a>
-    </div>
+<!-- Header -->
+<header class="header1">
+  <!-- Header desktop -->
+  <div class="container-menu-header">
+    <%= render 'topbar' %>
+    <%= render 'header_menu' %>
   </div>
 
+  <!-- Header Mobile -->
+  <%= render 'header_mobile' %>
 
-  <div class="wsize1 simpleslide100-parent respon2">
-    <!--  -->
-    <div class="simpleslide100">
-      <div class="simpleslide100-item bg-img1" style="background-image: url(<%= image_url 'c1.jpg' %>);"></div>
-      <div class="simpleslide100-item bg-img1" style="background-image: url(<%= image_url 'c2.jpg' %>);"></div>
-      <div class="simpleslide100-item bg-img1" style="background-image: url(<%= image_url 'c3.jpg' %>);"></div>
-    </div>
-  </div>
+  <!-- Menu Mobile -->
+  <%= render 'menu_mobile' %>
+</header>
+
+<!-- Slide1 -->
+<%= render 'slider' %>
+
+<!-- Banner -->
+<%= render 'banner' %>
+
+<!-- New Product -->
+<%= render 'new_product' %>
+
+<!-- Banner2 -->
+<%= render 'banner_two' %>
+
+<!-- Blog -->
+<%= render 'blog' %>
+
+<!-- Instagram -->
+<%= render 'testimonial' %>
+
+<!-- Shipping -->
+<%= render 'shipping' %>
+
+
+<!-- Footer -->
+<%= render 'footer' %>
+
+<!-- Back to top -->
+<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
 </div>
 
-<%= javascript_pack_tag 'main' %>
+<!-- Container Selection1 -->
+<div id="dropDownSelect1"></div>
+
+<div id="lightgallery"></div>

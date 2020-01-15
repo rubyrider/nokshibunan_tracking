@@ -1,3 +1,34 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :bigint           not null, primary key
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  full_name              :string(255)
+#  nickname               :string(255)
+#  slug                   :string(255)
+#  image                  :text(65535)
+#  address                :string(255)
+#  phone_number           :string(255)
+#  emergency_contact      :string(255)
+#  sex                    :integer
+#  birth_date             :date
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  country_code           :string(255)
+#
+
 class User < ApplicationRecord
   has_many :notes, as: :noteable
   rolify

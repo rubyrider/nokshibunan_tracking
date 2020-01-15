@@ -14,9 +14,9 @@
  *= require bootstrap/scss/bootstrap
  *= require animate.css/animate
  *= require hamburgers/dist/hamburgers
- * require animsition/dist/css/animsition
- * require slick-carousel/slick/slick.css
+ *= require animsition/dist/css/animsition
  *= require slick
+ *= require tracking
  *= require lightbox2/src/css/lightbox
  *= require util
  *= require main

@@ -12,6 +12,21 @@
   </head>
 
   <body class='animsition'>
+  <!-- Header -->
+  <header class="header1">
+    <!-- Header desktop -->
+    <div class="container-menu-header">
+      <%= render 'welcome/topbar' %>
+      <%= render 'welcome/header_menu' %>
+    </div>
+
+    <!-- Header Mobile -->
+    <%= render 'welcome/header_mobile' %>
+
+    <!-- Menu Mobile -->
+    <%= render 'welcome/menu_mobile' %>
+  </header>
     <%= yield %>
+  <%= render 'welcome/footer' %>
   </body>
 </html>

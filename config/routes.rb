@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :products
-  resources :orders
+  resources :orders do
+    collection do
+      get :track
+    end
+  end
 end

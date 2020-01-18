@@ -18,16 +18,20 @@ ActiveAdmin.register Order do
 
   show do
     panel 'Order Form Link', style: 'margin-bottom: 50px; width: 100%' do
-      if order.order_form_token.present?
+      order_form_token = order.order_form_token
+      if order_form_token.present?
         table_for order.order_form_token do
           column 'Link' do
-            edit_order_url(id: order.slug, token: order.order_form_token.token)
+            edit_order_url(id: order.slug, token: order_form_token.token)
           end
-          column :is_valid
+          column 'is_valid' do
+            order_form_token.is_valid_token
+          end
+          column :accessed_at
           column :expire_at
           column :expire_unit
           column 'actions' do
-            link_to('Edit', edit_admin_order_form_token_path(order.order_form_token))
+            link_to('Edit', edit_admin_order_form_token_path(order_form_token))
           end
         end
       else
@@ -61,7 +65,7 @@ ActiveAdmin.register Order do
 
   member_action :create_order_link, method: :post do
     if resource.order_form_token.present?
-      resource.order_form_token.update_attributes(is_valid: true)
+      resource.order_form_token.update_attributes(accessed_at: nil)
     else
       OrderFormToken.create(order_id: resource.id)
     end
@@ -71,6 +75,7 @@ ActiveAdmin.register Order do
 
   form do |f|
     f.inputs 'Order Details' do
+      f.input :facebook_url, input_html: { class: 'autogrow', rows: 2 }
       f.input :product_name
       f.input :product_detail, input_html: { class: 'autogrow', rows: 5 }
       f.input :product_image, as: :file
@@ -85,6 +90,7 @@ ActiveAdmin.register Order do
       f.input :currency, as: :select, collection: ISO3166::Country.countries.sort_by(&:name)
                                                       .collect { |c| [ c.currency_code, c.currency_code ] }
       f.input :delivery_fee
+      f.input :discount
       f.input :delivery_method
       f.input :payment_method
       f.input :payment_status

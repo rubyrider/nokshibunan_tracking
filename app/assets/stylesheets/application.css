@@ -16,8 +16,10 @@
  *= require hamburgers/dist/hamburgers
  *= require animsition/dist/css/animsition
  *= require slick
+ *= require slick-theme
  *= require tracking
  *= require lightbox2/src/css/lightbox
+ *= require toastr/toastr.scss
  *= require util
  *= require main
  *#= require_self

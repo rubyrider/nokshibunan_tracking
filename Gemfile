@@ -68,3 +68,4 @@ gem 'friendly_id', '~> 5.2.4'
 gem "rolify"
 gem 'sidekiq'
 gem 'phony_rails'
+gem 'rails-i18n', '~> 6.0.0'

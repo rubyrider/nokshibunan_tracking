@@ -9,6 +9,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  details    :text(65535)
+#  icon_name  :string(255)
 #
 
 class TrackingStatus < ApplicationRecord

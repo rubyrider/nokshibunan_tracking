@@ -7,15 +7,18 @@ require('@rails/ujs').start();
 require('turbolinks').start();
 require('@rails/activestorage').start();
 require('channels');
+global.toastr = require("toastr");
+
 import 'jquery'
 import 'popper.js'
 import  'bootstrap';
 import  'select2';
 import  'lightbox2';
-import './animsition'
-import  './slick.js'
-import './slick-custom.js'
-import './main.js'
+import './plugins/animsition'
+import './plugins/slick.js'
+import './plugins/slick-custom.js'
+import './plugins/main.js'
+import './custom'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

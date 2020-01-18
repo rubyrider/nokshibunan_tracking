@@ -22,6 +22,9 @@
 #  updated_at              :datetime         not null
 #  paid_amount             :float(24)        default(0.0)
 #  delivery_fee            :float(24)        default(0.0)
+#  slug                    :string(255)
+#  facebook_url            :text(65535)
+#  discount                :float(24)
 #
 
 class Order < ApplicationRecord

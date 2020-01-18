@@ -1,5 +1,9 @@
 ActiveAdmin.register_page 'Dashboard' do
   menu priority: 1
+  action_item only: :index do
+    link_to 'Create New Order', new_admin_order_path
+  end
+
   content title: proc { I18n.t('active_admin.dashboard') } do
     columns do
       panel 'Order Stats', style: 'margin-bottom: 50px; width: 100%' do

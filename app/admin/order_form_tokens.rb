@@ -15,7 +15,8 @@ ActiveAdmin.register OrderFormToken do
     f.inputs do
       f.input :expire_unit
       f.input :expire_at
-      f.input :is_valid
     end
+
+    f.actions
   end
 end

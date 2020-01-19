@@ -31,3 +31,21 @@
 
 en:
   hello: "Hello world"
+  order:
+    form:
+      name: "Name"
+      name-hint: "Your Name Here"
+      mobile: "Mobile"
+      mobile-hint: "Your Contact Number Here"
+      email: "Email"
+      email-hint: "Your Email Here"
+      password: "Pin"
+      password-hint: "Four digit pin number"
+      password_confirmation: "Confirm Pin"
+      password_confirmation-hint: "Retype Four digit pin number"
+      address: "Address"
+      address-hint: "Delivery Address"
+      note: "Note"
+      note-hint: "Any Note to add?"
+    errors:
+      invalid_link: "Link not available! Please contact admin."

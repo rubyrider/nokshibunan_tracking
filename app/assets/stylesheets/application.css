@@ -17,8 +17,10 @@
  *= require animsition/dist/css/animsition
  *= require slick
  *= require slick-theme
+ *= require nouislider.min
  *= require tracking
  *= require lightbox2/src/css/lightbox
+ *= require select2/dist/css/select2
  *= require toastr/toastr.scss
  *= require util
  *= require main

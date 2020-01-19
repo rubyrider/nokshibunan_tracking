@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
     unless accessibility
       respond_to do |format|
-        format.html { redirect_to root_path, alert: 'Link not available! Please contact admin.' }
+        format.html { redirect_to root_path, alert: t('order.errors.invalid_link') }
       end
     end
   end

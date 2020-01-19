@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       get :track
     end
   end
+  resources :contact_admins
+  get '/about' => 'contact_admins#about'
 end

@@ -1,5 +1,9 @@
 class ProductsController < ApplicationController
 
+  def index
+
+  end
+
   private
 
     def product_params

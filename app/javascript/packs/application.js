@@ -7,8 +7,11 @@ require('@rails/ujs').start();
 require('turbolinks').start();
 require('@rails/activestorage').start();
 require('channels');
+require('select2');
 global.toastr = require("toastr");
 
+import $ from 'jquery';
+global.$ = jQuery;
 import 'jquery'
 import 'popper.js'
 import  'bootstrap';
@@ -18,6 +21,7 @@ import './plugins/animsition'
 import './plugins/slick.js'
 import './plugins/slick-custom.js'
 import './plugins/main.js'
+import './plugins/nouislider.min.js'
 import './custom'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -26,3 +30,17 @@ import './custom'
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+
+$(document).on("turbolinks:load", function(){
+    $(".selection-1").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+});
+$(document).on("turbolinks:load", function(){
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect2')
+    });
+});

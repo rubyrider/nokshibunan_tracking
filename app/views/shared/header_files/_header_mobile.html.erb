@@ -1,8 +1,8 @@
 <div class="wrap_header_mobile">
   <!-- Logo moblie -->
-  <a href="index.html" class="logo-mobile">
-    <%= image_tag 'icons/logo.png' %>
-  </a>
+  <%= link_to root_path, class: 'logo-mobile' do %>
+    <%= image_tag 'icons/nokshibunan-icon.jpg'%>
+  <% end %>
 
   <!-- Button show menu -->
   <div class="btn-show-menu">
@@ -11,86 +11,6 @@
       <a href="#" class="header-wrapicon1 dis-block">
         <%= image_tag 'icons/icon-header-01.png', class: 'header-icon1' %>
       </a>
-
-      <span class="linedivide2"></span>
-
-      <div class="header-wrapicon2">
-        <%= image_tag 'icons/icon-header-01.png', class: 'header-icon1 js-show-header-dropdown' %>
-        <span class="header-icons-noti">0</span>
-
-        <!-- Header cart noti -->
-        <div class="header-cart header-dropdown">
-          <ul class="header-cart-wrapitem">
-            <li class="header-cart-item">
-              <div class="header-cart-item-img">
-                <%= image_tag 'item-cart-01.jpg' %>
-              </div>
-
-              <div class="header-cart-item-txt">
-                <a href="#" class="header-cart-item-name">
-                  White Shirt With Pleat Detail Back
-                </a>
-
-                <span class="header-cart-item-info">
-											1 x $19.00
-										</span>
-              </div>
-            </li>
-
-            <li class="header-cart-item">
-              <div class="header-cart-item-img">
-                <%= image_tag 'item-cart-02.jpg' %>
-              </div>
-
-              <div class="header-cart-item-txt">
-                <a href="#" class="header-cart-item-name">
-                  Converse All Star Hi Black Canvas
-                </a>
-
-                <span class="header-cart-item-info">
-											1 x $39.00
-										</span>
-              </div>
-            </li>
-
-            <li class="header-cart-item">
-              <div class="header-cart-item-img">
-                <%= image_tag 'item-cart-03.jpg' %>
-              </div>
-
-              <div class="header-cart-item-txt">
-                <a href="#" class="header-cart-item-name">
-                  Nixon Porter Leather Watch In Tan
-                </a>
-
-                <span class="header-cart-item-info">
-											1 x $17.00
-										</span>
-              </div>
-            </li>
-          </ul>
-
-          <div class="header-cart-total">
-            Total: $75.00
-          </div>
-
-          <div class="header-cart-buttons">
-            <div class="header-cart-wrapbtn">
-              <!-- Button -->
-              <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                View Cart
-              </a>
-            </div>
-
-            <div class="header-cart-wrapbtn">
-              <!-- Button -->
-              <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                Check Out
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="btn-show-menu-mobile hamburger hamburger--squeeze">

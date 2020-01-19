@@ -1,2 +1,21 @@
 bn:
   hello: "বিদায় পৃথিবী"
+  order:
+    form:
+      name: "নাম"
+      name-hint: "আপনার নাম লিখুন"
+      mobile: "মোবাইল"
+      mobile-hint: "মোবাইল নাম্বার  লিখুন"
+      email: "ইমেইল"
+      email-hint: "আপনার ইমেইল লিখুন"
+      password: "পিন নাম্বার"
+      password-hint: "চার সংখ্যার পিন নাম্বার দিন "
+      password_confirmation: "পিন নাম্বার আবার দিন"
+      password_confirmation-hint: "চার সংখ্যার পিন নাম্বার আবার দিন"
+      address: "ঠিকানা"
+      address-hint: "ডেলিভারি পাবার ঠিকানা"
+      note: "নোট"
+      note-hint: "কোনো কিছু জানানোর থাকলে এখানে লিখুন"
+    errors:
+      invalid_link: "লিংকটি ভুল ছিল। সঠিকটি পেতে এডমিনের সাথে যোগাযোগ করুন"
+

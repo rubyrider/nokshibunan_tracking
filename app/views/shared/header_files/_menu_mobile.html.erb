@@ -15,7 +15,7 @@
 
           <div class="topbar-language rs1-select2">
             <%= form_tag root_path, method: :get do |f| %>
-              <%= select_tag :locale, options_for_select([%w(English en), %w(বাংলা bn)], selected: params[:locale]), { class: 'selection-1', id: 'change-locale'} %>
+              <%= select_tag :locale, options_for_select([%w(English en), %w(বাংলা bn)], selected: params[:locale]), { class: 'mobile-locale-select', id: 'mobile-change-locale'} %>
             <% end %>
           </div>
         </div>

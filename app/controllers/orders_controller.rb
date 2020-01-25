@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :find_order_form_accessibility, only: :edit
 
   def edit
-    @user = User.new
+    # @user = User.new
   end
 
   def update

@@ -31,9 +31,9 @@ ActiveAdmin.register User do
       info_columns.each do |h|
         row h
       end
-      row :image do |ad|
-        image_tag ad.image.url unless ad.image.nil?
-      end
+      # row :image do |ad|
+      #   image_tag ad.image.url unless ad.image.nil?
+      # end
 
       row :roles do |user|
         user.roles.collect {|r| r.name.capitalize }.to_sentence

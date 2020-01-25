@@ -1,0 +1,12 @@
+<% if @data.presence %>
+$("#user_full_name").val("<%= @data[:name] %>")
+$("#order_address").val("<%= @data[:address] %>")
+$("#password_confirmation_div").remove()
+<% else %>
+$("#user_full_name").val('')
+$("#order_address").val('')
+
+if ($("#password_confirmation_div").length === 0){
+    $("#user_password_div").after("<%= escape_javascript(render 'orders/edit_form_partials/password_confirmation_field').html_safe %>")
+}
+<% end %>

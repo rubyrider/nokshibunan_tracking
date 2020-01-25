@@ -30,14 +30,16 @@
 #
 
 class User < ApplicationRecord
+  attr_accessor :login
   has_many :notes, as: :noteable
+  has_many :orders
   rolify
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :registerable, :recoverable, :rememberable, :trackable,
          :validatable, password_length: 4..4
-  devise :database_authenticatable, :authentication_keys => [:phone_number]
+  devise :database_authenticatable, authentication_keys: [:phone_number]
 
   extend FriendlyId
 
@@ -47,12 +49,20 @@ class User < ApplicationRecord
 
   validates_plausible_phone :phone_number
   phony_normalize :phone_number, country_code: :country_code, normalize_when_valid: true
-
   validates :email, uniqueness: true, allow_nil: true
-  validates_presence_of :phone_number, uniqueness: true, allow_nil: false
+  validates_format_of :email, with:  Constants::Regex::EMAIL_REGEX
+  validates_presence_of :phone_number, uniqueness: true, allow_nil: true
   validates_format_of :password,  with: /\A\d+\z/, message: 'Only numbers are allowed.', allow_blank: true
 
   enum sex: %i[male female other]
+
+  def self.find_for_database_authentication warden_conditions
+    conditions = warden_conditions.dup
+    login = conditions.delete(:login)
+
+    where(conditions).where(['phone_number = :value OR lower(email) = :value',
+                             { value: login.strip.downcase }]).first
+  end
 
   def email_required?
     false
@@ -69,5 +79,49 @@ class User < ApplicationRecord
 
   def should_generate_new_friendly_id?
     slug.blank? || full_name_changed?
+  end
+
+  protected
+
+  # Attempt to find a user by it's email. If a record is found, send new
+  # password instructions to it. If not user is found, returns a new user
+  # with an email not found error.
+  def self.send_reset_password_instructions(attributes = {})
+    recoverable = find_recoverable_or_initialize_with_errors(reset_password_keys,
+                                                             attributes, :not_found)
+    recoverable.send_reset_password_instructions if recoverable.persisted?
+
+    recoverable
+  end
+
+  def self.find_recoverable_or_initialize_with_errors(required_attributes, attributes, error = :invalid)
+    (case_insensitive_keys || []).each { |k| attributes[k].try(:downcase!) }
+
+    attributes = attributes.slice(*required_attributes)
+    attributes.delete_if { |_key, value| value.blank? }
+
+    if attributes.keys.size == required_attributes.size
+      if attributes.key?(:login)
+        login  = attributes.delete(:login)
+        record = find_record(login)
+      else
+        record = where(attributes).first
+      end
+    end
+
+    unless record
+      record = new
+
+      required_attributes.each do |key|
+        value = attributes[key]
+        record.send("#{key}=", value)
+        record.errors.add(key, value.present? ? error : :blank)
+      end
+    end
+    record
+  end
+
+  def self.find_record login
+    where(['phone_number = :value OR email = :value', { value: login }]).first
   end
 end

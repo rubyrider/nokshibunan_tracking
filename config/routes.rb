@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   end
   resources :contact_admins
   get '/about' => 'contact_admins#about'
+  resources :users do
+    collection do
+      get :check_order_user
+    end
+  end
 end

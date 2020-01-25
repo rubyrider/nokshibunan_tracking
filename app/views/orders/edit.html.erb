@@ -1,28 +1,73 @@
-<div class="col-md-6 p-b-30">
-  <form class="leave-comment">
-    <h4 class="m-text26 p-b-36 p-t-15">
-      Send us your message
-    </h4>
+<%= form_for @order, html: {class: 'leave-comment', id: 'order_form'} do |f| %>
+  <div class="container">
+    <div class="row">
 
-    <div class="bo4 of-hidden size15 m-b-20">
-      <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="Full Name">
+      <%= render 'orders/edit_form_partials/user_info', f: f %>
+      <%= render 'orders/edit_form_partials/order_info', f: f %>
+
+      <div class="w-size25">
+        <!-- Button -->
+        <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+          <%= t('submit') %>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <div class="bo4 of-hidden size15 m-b-20">
-      <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="phone-number" placeholder="Phone Number">
-    </div>
+<% end %>
 
-    <div class="bo4 of-hidden size15 m-b-20">
-      <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="email" placeholder="Email Address">
-    </div>
+<script type="text/javascript">
 
-    <textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="Message"></textarea>
+    $('#order_form').on('submit', function (e) {
 
-    <div class="w-size25">
-      <!-- Button -->
-      <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
-        Send
-      </button>
-    </div>
-  </form>
-</div>
+        let fields = ["#user_login", "#user_password", "#order_address", "#user_full_name"];
+        let i, l = fields.length;
+
+        for (i = 0; i < l; i++) {
+            let fieldId = fields[i];
+
+            if ($(fieldId).val() === "" ) {
+                toastr.error($(fieldId).attr("data-presence"));
+                return false;
+
+                e.preventDefault();
+            }
+        }
+        return true;
+    });
+
+    $('#user_password, #user_password_confirmation').on('keyup', validatePassword);
+
+    function validatePassword () {
+        var passwordVal  = $('#user_password').val();
+        var comfirmVal = $('#user_password_confirmation').val();
+        var num_regex=/^[0-9]+$/;
+
+        if( passwordVal && comfirmVal){
+            if (passwordVal.length === 4 && passwordVal.match(num_regex) ){
+                if ($('#user_password').val() === $('#user_password_confirmation').val()) {
+                    $('#password-message').html("<%= t('user.form.errors.matched') %>").css('color', 'green');
+                    return true;
+                } else
+                    $('#password-message').html("<%= t('user.form.errors.not_matched') %>").css('color', 'red');
+                return false;
+            }
+            else{
+                $('#password-message').html("<%= t('user.form.errors.invalid') %>").css('color', 'red');
+                return false;
+            }
+        }
+    }
+
+    $("#user_login").on('change',function(){
+        $.ajax({
+            method: 'get',
+            url: "/users/check_order_user",
+            data: {value: $(this).val(), type : "login", locale: "<%= I18n.locale.to_s %>"}
+        });
+    });
+
+    $(document).ready(function() {
+        $('#user_country').select2();
+    });
+</script>

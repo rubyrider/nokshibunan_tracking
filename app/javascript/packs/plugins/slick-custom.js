@@ -1,3 +1,5 @@
+window.$ = window.jQuery = require('jquery');
+
 (function ($) {
     // USE STRICT
     "use strict";

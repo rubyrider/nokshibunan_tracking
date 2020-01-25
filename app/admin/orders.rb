@@ -21,8 +21,11 @@ ActiveAdmin.register Order do
       order_form_token = order.order_form_token
       if order_form_token.present?
         table_for order.order_form_token do
-          column 'Link' do
-            edit_order_url(id: order.slug, token: order_form_token.token)
+          column 'Link for Bangla' do
+            edit_order_url(id: order.slug, token: order_form_token.token, locale: 'bn')
+          end
+          column 'Link for English' do
+            edit_order_url(id: order.slug, token: order_form_token.token, locale: 'en')
           end
           column 'is_valid' do
             order_form_token.is_valid_token

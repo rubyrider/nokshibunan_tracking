@@ -6,28 +6,30 @@
 
   <% if I18n.locale.to_s == 'en' %>
     <div class="rs2-select2 bo4 of-hidden size15 m-b-20">
-      <%= select_tag :user_country, options_for_select(ISO3166::Country.countries.sort_by(&:name)
-                                                           .collect { |c| [ c.name, c.alpha2 ] },
-                                                       selected: 'BD'),
+      <%= select_tag 'order[user[country]]', options_for_select(ISO3166::Country.countries.sort_by(&:name)
+                                                                    .collect { |c| [ c.name, c.alpha2 ] },
+                                                                selected: 'BD'),
                      {include_blank: false, id: 'user_country'} %>
 
     </div>
   <% end %>
 
   <div class="bo4 of-hidden size15 m-b-20">
-    <%= text_field_tag :user_login, nil, class: 'sizefull s-text7 p-l-22 p-r-22',
-                       placeholder: t('user.form.login-hint'), name: 'user[login]',
+    <%= text_field_tag 'order[user[login]]', nil, class: 'sizefull s-text7 p-l-22 p-r-22',
+                       placeholder: t('user.form.login-hint'),
                        data: { presence: t('user.form.login-hint') } %>
     <span class="login-message"></span>
   </div>
 
   <div class="bo4 of-hidden size15 m-b-20" id="user_password_div">
-    <%= password_field_tag :user_password, nil, class: 'sizefull s-text7 p-l-22 p-r-22',
-                           placeholder: t('user.form.password-hint'), name: 'user[password]',
-                           data: { presence: t('user.form.password-hint') } %>
+    <%= password_field_tag 'order[user[password]]', nil, class: 'sizefull s-text7 p-l-22 p-r-22',
+                           placeholder: t('user.form.password-hint'),
+                           data: { presence: t('user.form.password-hint') },
+                           onkeypress: 'return isNumberKey(event)' %>
   </div>
 
   <%= render 'orders/edit_form_partials/password_confirmation_field' %>
 
+  <span id="password-info"></span></br>
   <span id="password-message"></span>
 </div>

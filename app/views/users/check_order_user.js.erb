@@ -1,9 +1,9 @@
 <% if @data.presence %>
-$("#user_full_name").val("<%= @data[:name] %>")
+$("#order_user_full_name").val("<%= @data[:name] %>")
 $("#order_address").val("<%= @data[:address] %>")
 $("#password_confirmation_div").remove()
 <% else %>
-$("#user_full_name").val('')
+$("#order_user_full_name").val('')
 $("#order_address").val('')
 
 if ($("#password_confirmation_div").length === 0){

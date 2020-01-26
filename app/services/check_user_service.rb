@@ -33,7 +33,7 @@ class CheckUserService
   end
 
   def format_phone_number
-    PhonyRails.normalize_number(value, country_code: country_code)
+    @value = PhonyRails.normalize_number(value, country_code: country_code)
   end
 
   def user_data user

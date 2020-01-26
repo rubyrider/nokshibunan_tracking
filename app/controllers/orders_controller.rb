@@ -2,9 +2,7 @@ class OrdersController < ApplicationController
   before_action :find_order, only: %i[edit update]
   before_action :find_order_form_accessibility, only: :edit
 
-  def edit
-    # @user = User.new
-  end
+  def edit; end
 
   def update
 
@@ -32,7 +30,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:address, :amount, :currency, :product_name, :product_detail, :order_date, :estimated_delivery, :status_id, :payment_status, :payment_method_id)
+    params.require(:order).permit(:address, :note)
   end
 
 end

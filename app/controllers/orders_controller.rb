@@ -1,9 +1,46 @@
-class OrdersController < InheritedResources::Base
+class OrdersController < ApplicationController
+  before_action :find_order, only: %i[edit update]
+  before_action :find_order_form_accessibility, only: :edit
+
+  def edit; end
+
+  def update
+    @user, @message = UserServices::ValidateOrCreateOrderUser.new(order_params[:user]).perform
+
+    respond_to do |format|
+      if @user.present?
+        OrderServices::Updater.new(@order, params, @user).perform
+
+        return redirect_to root_path, notice: t('order.success')
+      else
+        format.js
+      end
+    end
+  end
+
+  def track
+
+  end
 
   private
 
-    def order_params
-      params.require(:order).permit(:address, :amount, :currency, :product_name, :product_detail, :order_date, :estimated_delivery, :status_id_id, :payment_status, :payment_method_id)
+  def find_order
+    @order = Order.friendly.find(params[:id])
+  end
+
+  def find_order_form_accessibility
+    accessibility = false
+    accessibility = OrderServices::FormAccessibility.new(@order, params[:token]).check if params[:token].present?
+
+    unless accessibility
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: t('order.errors.invalid_link') }
+      end
     end
+  end
+
+  def order_params
+    params.require(:order).permit(:address, :note, user: {})
+  end
 
 end

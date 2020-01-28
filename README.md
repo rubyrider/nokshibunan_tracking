@@ -35,10 +35,19 @@ bundle && yarn
 
 ### Set environment variables
 
-Using rails credentials.yml.enc and master.key[(blog for details)](https://blog.eq8.eu/til/rails-52-credentials-tricks.html). 
-#### Contact Us for master key.
+Using rails credentials.yml.enc and master.key[(blog for details)](https://blog.eq8.eu/til/rails-52-credentials-tricks.html). Paste the below to the `credentials.yml.enc`
 
-
+```
+database:
+  username:
+    development: 'your-username'
+    production: 'your-username'
+  password:
+    development: 'your-password'
+    production: 'your-password'
+  name:
+    production: 'prod-db-name'
+```
 
 ### Initialize the database
 

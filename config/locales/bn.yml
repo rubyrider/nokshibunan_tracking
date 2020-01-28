@@ -1,0 +1,40 @@
+bn:
+  hello: "বিদায় পৃথিবী"
+  submit: 'জমা দিন'
+  devise:
+    invalid_login: "ভুল ফোন নাম্বার অথবা ইমেইল অথবা পিন নাম্বার"
+    password_mismatch: "দুটো পিন নাম্বার একই হতে হবে"
+  activerecord:
+    attributes:
+      user:
+        login: "ফোন নাম্বার অথবা ইমেইল"
+  user:
+    form:
+      info: 'আপনার তথ্য দিন'
+      login: "ফোন নাম্বার অথবা ইমেইল"
+      login-hint: "ফোন নাম্বার অথবা ইমেইল লিখুন"
+      name: "নাম"
+      name-hint: "আপনার নাম লিখুন"
+      mobile: "মোবাইল"
+      mobile-hint: "মোবাইল নাম্বার  লিখুন"
+      email: "ইমেইল"
+      email-hint: "আপনার ইমেইল লিখুন"
+      password: "পিন নাম্বার"
+      password-hint: "চার সংখ্যার পিন নাম্বার দিন"
+      password_confirmation: "পিন নাম্বার আবার দিন"
+      password_confirmation-hint: "চার সংখ্যার পিন নাম্বার আবার দিন"
+      errors:
+        matched: "পিন নাম্বার সঠিক"
+        not_matched: "পিন নাম্বার মিলেনি"
+        invalid: "পিন নাম্বার চার্ সংখ্যার হতে হবে"
+  order:
+    success: 'আপনার অর্ডার সফলভাবে সম্পন্ন হয়েছে'
+    form:
+      order_info: 'অর্ডার এর তথ্য দিন '
+      address: "ঠিকানা"
+      address-hint: "ডেলিভারি পাবার ঠিকানা লিখুন"
+      note: "নোট"
+      note-hint: "কোনো কিছু জানানোর থাকলে এখানে লিখুন"
+    errors:
+      invalid_link: "লিংকটি ভুল ছিল। সঠিকটি পেতে এডমিনের সাথে যোগাযোগ করুন"
+

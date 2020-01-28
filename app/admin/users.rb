@@ -2,7 +2,7 @@ ActiveAdmin.register User do
 
   menu parent: 'User System', label: 'Users'
 
-  permit_params User.column_names_excluded.map(&:to_sym), :password, :password_confirmation, role_ids: []
+  permit_params User.column_names_excluded, :password, :password_confirmation, role_ids: []
 
   info_columns = %i[phone_number email full_name nickname address
                     emergency_contact sex birth_date]
@@ -31,9 +31,9 @@ ActiveAdmin.register User do
       info_columns.each do |h|
         row h
       end
-      row :image do |ad|
-        image_tag ad.image.url unless ad.image.url.nil?
-      end
+      # row :image do |ad|
+      #   image_tag ad.image.url unless ad.image.nil?
+      # end
 
       row :roles do |user|
         user.roles.collect {|r| r.name.capitalize }.to_sentence

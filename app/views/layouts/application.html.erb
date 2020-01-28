@@ -7,13 +7,17 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
+  <%= render 'shared/loader' %>
+  <!-- Header -->
+  <%= render 'shared/header' %>
     <%= yield %>
+  <%= render 'shared/footer' %>
+  <%= custom_bootstrap_flash %>
   </body>
 </html>

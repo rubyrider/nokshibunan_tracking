@@ -1,0 +1,41 @@
+<div class="wrap_header">
+  <!-- Logo -->
+  <%= link_to root_path, class: 'logo' do %>
+    <%= image_tag 'icons/nokshibunan-icon.jpg'%>
+  <% end %>
+
+
+  <!-- Menu -->
+  <div class="wrap_menu">
+    <nav class="menu">
+      <ul class="main_menu">
+        <li>
+          <%= link_to 'Home', root_path %>
+        </li>
+
+        <li>
+          <%= link_to 'Products', products_path %>
+        </li>
+
+        <!--        <li>-->
+        <!--          <a href="blog.html">Blog</a>-->
+        <!--        </li>-->
+
+        <li>
+          <%= link_to 'About', about_path %>
+        </li>
+
+        <li>
+          <%= link_to 'Contact', contact_admins_path %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Header Icon -->
+  <div class="header-icons">
+    <a href="#" class="header-wrapicon1 dis-block">
+      <%= image_tag 'icons/icon-header-01.png', class: 'header-icon1' %>
+    </a>
+  </div>
+</div>

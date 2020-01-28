@@ -1,0 +1,47 @@
+<div class="wrap-side-menu" >
+  <nav class="side-menu">
+    <ul class="main-menu">
+      <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<span class="topbar-child1">
+							Free shipping for standard order over $100
+						</span>
+      </li>
+
+      <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+        <div class="topbar-child2-mobile">
+							<span class="topbar-email">
+								info@nokshibunan.com
+							</span>
+
+          <div class="topbar-language rs1-select2">
+            <%= form_tag root_path, method: :get do |f| %>
+              <%= select_tag :locale, options_for_select([%w(English en), %w(বাংলা bn)], selected: params[:locale]), { class: 'mobile-locale-select', id: 'mobile-change-locale'} %>
+            <% end %>
+          </div>
+        </div>
+      </li>
+
+      <li class="item-topbar-mobile p-l-10">
+        <div class="topbar-social-mobile">
+          <a href="#" class="topbar-social-item fa fa-facebook"></a>
+        </div>
+      </li>
+
+      <li class="item-menu-mobile">
+        <%= link_to 'Home', root_path %>
+      </li>
+
+      <li class="item-menu-mobile">
+        <%= link_to 'Products', products_path %>
+      </li>
+
+      <li class="item-menu-mobile">
+        <%= link_to 'About', about_path %>
+      </li>
+
+      <li class="item-menu-mobile">
+        <%= link_to 'Contact', contact_admins_path %>
+      </li>
+    </ul>
+  </nav>
+</div>

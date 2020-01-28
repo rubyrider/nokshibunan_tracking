@@ -6,5 +6,16 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :products
-  resources :orders
+  resources :orders do
+    collection do
+      get :track
+    end
+  end
+  resources :contact_admins
+  get '/about' => 'contact_admins#about'
+  resources :users do
+    collection do
+      get :check_order_user
+    end
+  end
 end

@@ -1,0 +1,21 @@
+<div class="topbar">
+  <div class="topbar-social">
+    <a href="https://www.facebook.com/nokshibunan/" target="_blank" class="topbar-social-item fa fa-facebook"></a>
+  </div>
+
+  <span class="topbar-child1">
+					Free shipping for standard order over $100
+				</span>
+
+  <div class="topbar-child2">
+					<span class="topbar-email">
+						info@nokshibunan.com
+					</span>
+
+    <div class="topbar-language rs1-select2">
+      <%= form_tag root_path, method: :get do |f| %>
+        <%= select_tag :locale, options_for_select([%w(English en), %w(বাংলা bn)], selected: params[:locale]), { class: 'web-locale-select', id: 'web-change-locale'} %>
+      <% end %>
+    </div>
+  </div>
+</div>

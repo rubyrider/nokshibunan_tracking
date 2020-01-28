@@ -1,0 +1,19 @@
+<%= form_for @order, remote: true, html: {class: 'leave-comment', id: 'order_form'} do |f| %>
+  <div class="container">
+    <div class="row">
+
+      <%= render 'orders/edit_form_partials/user_info', f: f %>
+      <%= render 'orders/edit_form_partials/order_info', f: f %>
+
+      <div class="w-size25">
+        <!-- Button -->
+        <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+          <%= t('submit') %>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<%= javascript_pack_tag "order_form" %>

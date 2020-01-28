@@ -1,0 +1,19 @@
+<div class="col-md-6 p-b-30">
+  <h4 class="m-text26 p-b-36 p-t-15">
+    <%= t('order.form.order_info') %>
+  </h4>
+
+  <div class="bo4 of-hidden size15 m-b-20">
+    <%= text_field_tag 'order[user[full_name]]', nil, class: 'sizefull s-text7 p-l-22 p-r-22',
+                       placeholder: t('user.form.name-hint'),
+                       data: { presence: t('user.form.name-hint') } %>
+  </div>
+
+  <%= f.text_area :address, class: 'dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20',
+                  placeholder: t('order.form.address-hint'),
+                  data: { presence: t('order.form.address-hint') }%>
+
+  <%= text_area_tag :order_note, nil, class: 'dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20',
+                    placeholder: t('order.form.note-hint'), name: 'order[note]'%>
+
+</div>

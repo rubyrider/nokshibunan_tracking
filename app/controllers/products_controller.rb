@@ -1,4 +1,8 @@
-class ProductsController < InheritedResources::Base
+class ProductsController < ApplicationController
+
+  def index
+
+  end
 
   private
 

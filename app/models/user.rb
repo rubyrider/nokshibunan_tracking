@@ -50,9 +50,9 @@ class User < ApplicationRecord
   validates_plausible_phone :phone_number
   phony_normalize :phone_number, country_code: :country_code, normalize_when_valid: true
   validates :email, uniqueness: true, allow_nil: true
-  validates_format_of :email, with:  Constants::Regex::EMAIL_REGEX
+  validates_format_of :email, with: Constants::Regex::EMAIL_REGEX
   validates_presence_of :phone_number, uniqueness: true, allow_nil: true
-  validates_format_of :password,  with: /\A\d+\z/, message: 'Only numbers are allowed.', allow_blank: true
+  validates_format_of :password, with: /\A\d+\z/, message: 'Only numbers are allowed.', allow_blank: true
 
   enum sex: %i[male female other]
 

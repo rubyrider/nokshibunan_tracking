@@ -1,6 +1,6 @@
 # deployed_branch = Bundler.settings.credentials_for('deployed_branch').to_s
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.10.0"
+lock '~> 3.10.0'
 
 set :application, 'nokshibunan_tracking'
 set :repo_url, 'git@github.com:rubyrider/nokshibunan_tracking.git'
@@ -9,7 +9,7 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-set :assets_roles, [:web, :app]
+set :assets_roles, %i[web app]
 set :keep_releases, 2
 set :pty,             true
 set :use_sudo,        false
@@ -29,7 +29,7 @@ namespace :puma do
 end
 
 namespace :deploy do
-  desc "Make sure local git is in sync with remote."
+  desc 'Make sure local git is in sync with remote.'
   task :check_revision do
     on roles(:app) do
     end

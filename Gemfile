@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -39,7 +39,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'annotate'
-  gem "capistrano", '3.10.0'
+  gem 'bullet'
+  gem 'capistrano', '3.10.0'
   gem 'capistrano-bundler', '1.6.0'
   gem 'capistrano-logtail', '0.1.1'
   gem 'capistrano-rails', '1.4.0'
@@ -50,13 +51,15 @@ group :development do
   gem 'capistrano-yarn', '2.0.2'
   gem 'capistrano3-nginx', '2.1.6'
   gem 'capistrano3-puma', '3.1.1'
+  gem 'fasterer'
+  gem 'rack-mini-profiler', require: false
   gem 'rubocop', '~> 0.52.1', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'activeadmin', '2.2.0'
 gem 'activeadmin_addons'
@@ -65,7 +68,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'countries'
 gem 'devise'
 gem 'friendly_id', '~> 5.2.4'
-gem "rolify"
-gem 'sidekiq'
 gem 'phony_rails'
 gem 'rails-i18n', '~> 6.0.0'
+gem 'rolify'
+gem 'sidekiq'

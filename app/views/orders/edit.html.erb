@@ -1,4 +1,4 @@
-<%= form_for @order, html: {class: 'leave-comment', id: 'order_form'} do |f| %>
+<%= form_for @order, remote: true, html: {class: 'leave-comment', id: 'order_form'} do |f| %>
   <div class="container">
     <div class="row">
 
@@ -16,71 +16,4 @@
 
 <% end %>
 
-<script type="text/javascript">
-
-    $('#order_form').on('submit', function (e) {
-
-        let fields = ["#user_login", "#order_user_password", "#order_order_address", "#order_user_full_name"];
-        let i, l = fields.length;
-
-        for (i = 0; i < l; i++) {
-            let fieldId = fields[i];
-
-            if ($(fieldId).val() === "" ) {
-                toastr.error($(fieldId).attr("data-presence"));
-                return false;
-
-                e.preventDefault();
-            }
-        }
-        return true;
-    });
-
-    $('#order_user_password, #order_user_password_confirmation').on('keyup', validatePassword);
-
-    function validatePassword () {
-        var passwordVal  = $('#order_user_password').val();
-        var comfirmVal = $('#order_user_password_confirmation').val();
-        var num_regex=/^[0-9]+$/;
-
-        if( passwordVal && comfirmVal){
-            if (passwordVal.length === 4 && passwordVal.match(num_regex) ){
-                if (passwordVal === comfirmVal) {
-                    $('#password-message').html("<%= t('user.form.errors.matched') %>").css('color', 'green');
-                    return true;
-                } else
-                    $('#password-message').html("<%= t('user.form.errors.not_matched') %>").css('color', 'red');
-                return false;
-            }
-            else{
-                $('#password-message').html("<%= t('user.form.errors.invalid') %>").css('color', 'red');
-                return false;
-            }
-        }
-    }
-
-    $("#order_user_login").on('change',function(){
-        let country_code = $("#user_country").val();
-        $.ajax({
-            method: 'get',
-            url: "/users/check_order_user",
-            data: {value: $(this).val(), locale: "<%= I18n.locale.to_s %>", country_code: country_code}
-        });
-    });
-
-    $(document).ready(function() {
-        $('#order_user_country').select2();
-    });
-
-    function isNumberKey(evt) {
-        var charCode = (evt.which) ? evt.which : evt.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)){
-            $('#password-info').html("<%= t('user.form.errors.invalid') %>").css('color', '#00529B');
-
-            return false;
-        }
-        $('#password-info').html('');
-        return true;
-    }
-
-</script>
+<%= javascript_pack_tag "order_form" %>

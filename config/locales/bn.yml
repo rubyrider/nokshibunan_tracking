@@ -1,6 +1,13 @@
 bn:
   hello: "বিদায় পৃথিবী"
   submit: 'জমা দিন'
+  devise:
+    invalid_login: "ভুল ফোন নাম্বার অথবা ইমেইল অথবা পিন নাম্বার"
+    password_mismatch: "দুটো পিন নাম্বার একই হতে হবে"
+  activerecord:
+    attributes:
+      user:
+        login: "ফোন নাম্বার অথবা ইমেইল"
   user:
     form:
       info: 'আপনার তথ্য দিন'
@@ -21,10 +28,11 @@ bn:
         not_matched: "পিন নাম্বার মিলেনি"
         invalid: "পিন নাম্বার চার্ সংখ্যার হতে হবে"
   order:
+    success: 'আপনার অর্ডার সফলভাবে সম্পন্ন হয়েছে'
     form:
       order_info: 'অর্ডার এর তথ্য দিন '
       address: "ঠিকানা"
-      address-hint: "ডেলিভারি পাবার ঠিকানা"
+      address-hint: "ডেলিভারি পাবার ঠিকানা লিখুন"
       note: "নোট"
       note-hint: "কোনো কিছু জানানোর থাকলে এখানে লিখুন"
     errors:

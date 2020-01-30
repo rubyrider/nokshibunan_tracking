@@ -3,7 +3,13 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
-  devise_for :users
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+  }
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   resources :products
   resources :orders do

@@ -22,10 +22,10 @@
 
     <div class="row d-flex justify-content-center">
       <div class="col-12">
-        <ul id="progressbar" class="text-center">
+        <ul class="track_status" class="text-center">
           <% @tracking_statuses.each do |ts| %>
             <li>
-              <i class="icon fa <%= ts.icon_name %> fa-3x"></i>
+              <i class="icon <%= ts.icon_name %> fa-3x"></i>
               <div class="d-flex flex-column">
                 <p class="font-weight-bold"> <%= ts.name %></p>
               </div>

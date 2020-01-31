@@ -34,12 +34,13 @@ class User < ApplicationRecord
   has_many :notes, as: :noteable
   has_many :orders
   rolify
+  attr_writer :login
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :registerable, :recoverable, :rememberable, :trackable,
          :validatable, password_length: 4..4
-  devise :database_authenticatable, authentication_keys: [:phone_number]
+  devise :database_authenticatable, authentication_keys: [:login]
 
   extend FriendlyId
 
@@ -56,25 +57,18 @@ class User < ApplicationRecord
 
   enum sex: %i[male female other]
 
-  def self.find_for_database_authentication warden_conditions
+  def login
+    @login || self.phone_number || self.email
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
-    login = conditions.delete(:login)
-
-    where(conditions).where(['phone_number = :value OR lower(email) = :value',
-                             { value: login.strip.downcase }]).first
-  end
-
-  def email_required?
-    false
-  end
-
-  def email_changed?
-    false
-  end
-
-  # use this instead of email_changed? for Rails = 5.1.x
-  def will_save_change_to_email?
-    false
+    if login = conditions.delete(:login)
+      where(conditions.to_h).where(['phone_number = :value OR lower(email) = :value',
+                                    { value: login.downcase }]).first
+    elsif conditions.key?(:phone_number) || conditions.key?(:email)
+      where(conditions.to_h).first
+    end
   end
 
   def should_generate_new_friendly_id?

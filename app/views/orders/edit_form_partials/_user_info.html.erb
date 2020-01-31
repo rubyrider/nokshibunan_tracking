@@ -16,7 +16,7 @@
 
   <div class="bo4 of-hidden size15 m-b-20">
     <%= text_field_tag 'order[user[login]]', nil, class: 'sizefull s-text7 p-l-22 p-r-22',
-                       placeholder: t('user.form.login-hint'),
+                       placeholder: t('user.form.login-hint'), autofocus: true,
                        data: { presence: t('user.form.login-hint') } %>
     <span class="login-message"></span>
   </div>

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: %i[edit update]
   before_action :find_order_form_accessibility, only: :edit
+  before_action :authenticate_user!, only: :track
 
   def edit; end
 
@@ -19,7 +20,12 @@ class OrdersController < ApplicationController
   end
 
   def track
+    @orders = current_user.orders.all
+    @tracking_statuses = TrackingStatus.all
 
+    respond_to do |format|
+      format.html
+    end
   end
 
   private

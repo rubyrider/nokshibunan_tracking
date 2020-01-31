@@ -33,9 +33,28 @@
   </div>
 
   <!-- Header Icon -->
+
+
   <div class="header-icons">
-    <a href="#" class="header-wrapicon1 dis-block">
-      <%= image_tag 'icons/icon-header-01.png', class: 'header-icon1' %>
-    </a>
+    <% if user_signed_in? %>
+      <div class="header-wrapicon2">
+        <%= link_to track_orders_path do %>
+          <%= image_tag 'icons/icon-header-02.png', class: 'header-icon1 js-show-header-dropdown' %>
+        <% end %>
+      </div>
+
+      <span class="linedivide1"></span>
+
+      <div class="header-wrapicon2">
+        <%= link_to track_orders_path do %>
+          <%= image_tag 'icons/icon-header-01.png', class: 'header-icon1 js-show-header-dropdown' %>
+        <% end %>
+      </div>
+      <span class="linedivide1"></span>
+
+      <%= link_to 'Logout', destroy_user_session_path, html: {class: "header-wrapicon1 dis-block"} %>
+    <% else %>
+      <%= link_to 'Login', new_user_session_path, html: {class: "header-wrapicon1 dis-block"} %>
+    <% end %>
   </div>
 </div>

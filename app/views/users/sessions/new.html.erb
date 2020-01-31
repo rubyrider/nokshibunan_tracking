@@ -1,0 +1,44 @@
+<section class="bgwhite p-t-66 p-b-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 p-b-30">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'leave-comment', id: 'login_form'}) do |f| %>
+
+          <h4 class="m-text26 p-b-36 p-t-15">
+            Login
+          </h4>
+
+          <div class="bo4 of-hidden size15 m-b-20">
+            <%= f.text_field :login, autofocus: true, class: 'sizefull s-text7 p-l-22 p-r-22',
+                             placeholder: t('user.form.login-hint') %>
+          </div>
+
+          <div class="bo4 of-hidden size15 m-b-20" id="user_password_div">
+            <%= f.password_field :password, autocomplete: "current-password",
+                                 class: 'sizefull s-text7 p-l-22 p-r-22',
+                                 placeholder: t('user.form.password-hint'),
+                                 data: { presence: t('user.form.password-hint') } %>
+          </div>
+
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+
+          <div class="w-size25">
+            <!-- Button -->
+            <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+              Send
+            </button>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6 p-b-30">
+        <div class="hov-img-zoom">
+          <%= image_tag 'sliders/c1.jpg' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

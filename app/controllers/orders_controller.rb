@@ -23,9 +23,7 @@ class OrdersController < ApplicationController
     @orders = current_user.orders.all
     @tracking_statuses = TrackingStatus.all
 
-    respond_to do |format|
-      format.html
-    end
+    respond_to :html
   end
 
   private

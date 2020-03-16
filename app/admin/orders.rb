@@ -124,7 +124,6 @@ ActiveAdmin.register Order do
 
     def create
       build_resource
-      byebug
       resource.user_id = determine_user_id(permitted_params[:user]) if permitted_params[:user][:phone_number].present?
 
       super

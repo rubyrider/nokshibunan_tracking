@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
+    sessions: 'users/sessions'
   }
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
@@ -23,5 +23,9 @@ Rails.application.routes.draw do
     collection do
       get :check_order_user
     end
+  end
+  # mount Facebook::Messenger::Server, at: 'facebook'
+  namespace :facebook do
+    resources :webhook, only: %i[index create]
   end
 end

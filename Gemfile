@@ -31,6 +31,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -67,6 +71,7 @@ gem 'arctic_admin', '3.0.0'
 gem 'carrierwave', '~> 2.0'
 gem 'countries'
 gem 'devise'
+gem 'facebook-messenger'
 gem 'friendly_id', '~> 5.2.4'
 gem 'phony_rails'
 gem 'rails-i18n', '~> 6.0.0'
